@@ -1,0 +1,12 @@
+.map {
+    height:600px;
+    width:600px;
+}
+
+.filled {
+    background-color: teal;
+}
+
+li {
+    cursor: pointer;
+}
