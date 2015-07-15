@@ -64,6 +64,7 @@
                 this.marker.bindPopup(this.newRemoveForm()).openPopup();
                 scope.map.closePopup();
                 scope.$apply();
+				console.log(this);
                 return this;
             }
             scope.points = [];
