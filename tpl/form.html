@@ -4,29 +4,29 @@
     <div class="col-xs-5">
       <div class="row">
         <div class="col-xs-12">
-          Lat: {{ coord.lat }}
+          Lat: {! coord.lat !}
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          Lng: {{ coord.lng }}
+          Lng: {! coord.lng !}
         </div>
       </div>
     </div>
     <div class="col-xs-5">
       <div class="row">
         <div class="col-xs-12">
-          Country: {{ country }}
+          Country: {! country !}
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          Region: {{ region }}
+          Region: {! region !}
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          City: {{ city }}
+          City: {! city !}
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
               <div class="form-group">
                 Category <br />
                 <div ng-repeat="cat in $parent.categories" class="myRadio">
-                  <input type="radio" name="category" id="cat{{cat}}" ng-model="category" value="{{cat}}" /> <label for="cat{{cat}}">{{ cat }}</label>
+                  <input type="radio" name="category" id="cat{!cat!}" ng-model="category" value="{!cat!}" /> <label for="cat{!cat!}">{! cat !}</label>
                 </div>
               </div>
               <div class="form-group">
@@ -104,7 +104,7 @@
                   </div>
                   <div class="col-xs-6">
                     <select  class="form-control" type="number" name="currency" ng-model="currency" placeholder="00">
-                      <option ng-repeat="option in $parent.currency" value="{{ option }}">{{ option }}</option>
+                      <option ng-repeat="option in $parent.currency" value="{! option !}">{! option !}</option>
                     </select>
                   </div>
                 </div>

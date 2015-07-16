@@ -10,7 +10,7 @@
             }).addTo(scope.map);
             scope.map.on('click',function(e){
                 // scope.inProgress = true;
-                $http.get('tpl/form.html').success(function(x){
+                $http.get('/git/MyTravelGuide/tpl/form.html').success(function(x){
                     var point = new Point(e.latlng);
                     scope.popup = w.L.popup({ maxWidth:500, minWidth: 500, autoPan: true, keepInView: false})
                         .setLatLng(e.latlng)
@@ -95,9 +95,9 @@
             });
         })
 		.config(function($interpolateProvider) {
--			$interpolateProvider.startSymbol('{!');
--			$interpolateProvider.endSymbol('!}');
--		})
+			$interpolateProvider.startSymbol('{!');
+			$interpolateProvider.endSymbol('!}');
+		})
     ;
 })(window);
 
