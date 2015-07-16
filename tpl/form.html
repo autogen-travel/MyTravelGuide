@@ -1,0 +1,125 @@
+<div class="form">
+  <!-- brief start -->
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="row">
+        <div class="col-xs-12">
+          Lat: {{ coord.lat }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          Lng: {{ coord.lng }}
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-5">
+      <div class="row">
+        <div class="col-xs-12">
+          Country: {{ country }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          Region: {{ region }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          City: {{ city }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <form action="test.php" method="POST">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <input class="form-control" ng-model="title" type="text" placeholder="Title" name="title" required>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success" value="Save">
+              <a class="btn btn-primary" ng-click="showExtra = !showExtra;">Add Extra info</a>
+            </div>
+          </div>
+        </div>
+        <div ng-show="showExtra" >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <textarea class="form-control" name="annotation" ng-model="annotation" placeholder="Annotation"></textarea>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="full_content" ng-model="fullContent" placeholder="Full content" style="min-height:75px;"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                Category <br />
+                <div ng-repeat="cat in $parent.categories" class="myRadio">
+                  <input type="radio" name="category" ng-model="category" value="{{cat}}" /> {{ cat }}
+                </div>
+              </div>
+              <div class="form-group">
+                Rating <br />
+                <input class="form-control" type="number" name="rating" ng-model="rating" placeholder="0" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <textarea class="form-control" name="address" ng-model="address" placeholder="Address"></textarea>
+              </div>
+              <div class="form-group">
+                <input class="form-control" name="phones" ng-model="phones" placeholder="Phones" />
+              </div>
+              <div class="form-group">
+                <input class="form-control" name="website" ng-model="website" placeholder="Web-site" />
+              </div>
+              <div class="form-group">
+                <input class="form-control" name="email" ng-model="email" placeholder="Email" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                Time <br />
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input class="form-control" type="number" name="hours" min="0" max="23" ng-model="hours" placeholder="00" />
+                  </div>
+                  <div class="col-xs-6">
+                    <input class="form-control" type="number" name="minutes" min="0" max="59" ng-model="minutes" placeholder="00" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                Cost <br />
+                <div class="row">
+                  <div class="col-xs-6">
+                    <input class="form-control" type="number" step="any" min="0" name="cost" ng-model="cost" placeholder="00" />
+                  </div>
+                  <div class="col-xs-6">
+                    <select  class="form-control" type="number" name="currency" ng-model="currency" placeholder="00">
+                      <option ng-repeat="option in $parent.currency" value="{{ option }}">{{ option }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="images"></div>
+              <a class="btn btn-success btn-lg" onclick="$('.fake').click()">+</a>
+              <input type="file" class="hidden fake" multiple name="image[]" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
