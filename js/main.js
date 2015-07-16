@@ -2,6 +2,10 @@
 (function(w){
     'use strict';
     w.angular.module('myMap',['ui.sortable'])
+		.config(function($interpolateProvider) {
+-			$interpolateProvider.startSymbol('{!');
+-			$interpolateProvider.endSymbol('!}');
+-		})
         .controller('mapC',function($scope,$compile,$http){
             var scope = $scope;
             scope.map = w.L.map('map').setView([55.751244, 37.618423], 15);
