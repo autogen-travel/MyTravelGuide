@@ -1,0 +1,104 @@
+<form action="/test.php" method="POST" class="withBorder" ng-submit="save($event,true)"">
+  <div class="form-group">
+    <label for="titleInput{!index!}">Название места</label>
+    <input class="form-control" id="titleInput{!index!}" ng-model="title" name="title" />
+  </div>
+  <div class="form-group">
+    <label for="annotationInput{!index!}">Краткое описание</label>
+    <textarea class="form-control" id="annotationInput{!index!}" ng-model="annotation" name="annotation"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="fullContentInput{!index!}">Полное описание</label>
+    <textarea markdownedit class="form-control" id="fullContentInput{!index!}" ng-model="fullContent" name="fullContent"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="addressInput{!index!}">Адрес</label>
+    <textarea class="form-control" id="addressInput{!index!}" ng-model="address" name="address"></textarea>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="phoneInput{!index!}">Телефон</label>
+        <input class="form-control" id="phoneInput{!index!}" ng-model="phone" name="phone" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="siteInput{!index!}">Сайт</label>
+        <input class="form-control" id="siteInput{!index!}" ng-model="site" name="site" />
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="emailInput{!index!}">Email</label>
+        <input class="form-control" id="emailInput{!index!}" ng-model="email" name="email" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label style="display:block">Категория</label>
+        <div ng-repeat="cat in $parent.categories" class="myRadio">
+          <input type="radio" name="category" id="cat{!cat!}" ng-model="category" ng-value="cat" ng-checked="category" /> <label for="cat{!cat!}">{! cat !}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Время</label>
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" type="number" name="hours" min="0" max="23" ng-model="hours" placeholder="00" />
+          </div>
+          <div class="col-xs-6">
+            <input class="form-control" type="number" name="minutes" min="0" max="59" ng-model="minutes" placeholder="00" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Стоимость</label>
+        <div class="row">
+          <div class="col-xs-6">
+            <input class="form-control" type="number" step="any" min="0" name="cost" ng-model="cost" placeholder="00" />
+          </div>
+          <div class="col-xs-6">
+            <select  class="form-control" type="number" name="currency" ng-model="currency" placeholder="00">
+              <option ng-repeat="option in $parent.currency" ng-selected="$parent.currency == option" value="{! option !}">{! option !}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="rateInput{!index!}">Рейтинг</label>
+        <input class="form-control" id="rateInput{!index!}" ng-model="rate" name="rate" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-group">
+      <div class="images" ng-repeat="thumb in thumbnails">
+        <div class="img-container">
+          <img class="img-circle" src="{!thumb!}" />
+          <button type="button" class="close" ng-click="removeThumb($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      </div>
+      <img src="img/addimage.png" onclick="$(this).next().click()" style="width:50px;" class="pointer" />
+      <input type="file" name="image[]" class="hidden" ng-model="images" onchange="angular.element(this).scope().makeThumbnails(this,event)" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-success" />
+      </div>
+    </div>
+  </div>
+</form>
