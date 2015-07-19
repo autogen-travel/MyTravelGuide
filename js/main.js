@@ -105,7 +105,7 @@
             };
             local.render = {};
             local.render.new = function(){
-                $http.get("https://nominatim.openstreetmap.org/reverse?format=json&lat="+local.coord.lat+"&lon="+local.coord.lng+"&zoom=10&addressdetails=1")
+                $http.get("https://nominatim.openstreetmap.org/reverse?format=json&lat="+local.coord.lat+"&lon="+local.coord.lng+"&zoom="+scope.map.getZoom()+"&addressdetails=1")
                     .success(function(rsp){
                         local.title = rsp.class ? rsp.class : rsp.display_name;
                         local.address = rsp.display_name;
