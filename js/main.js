@@ -103,12 +103,27 @@
             local.removeThumb = function(i){
                 local.thumbnails.splice(i,1);
             };
-            local.render = {};
+            local.render = {};            
             local.render.new = function(){
                 $http.get("https://nominatim.openstreetmap.org/reverse?format=json&lat="+local.coord.lat+"&lon="+local.coord.lng+"&zoom="+scope.map.getZoom()+"&addressdetails=1")
                     .success(function(rsp){
-                        local.title = rsp.class ? rsp.class : rsp.display_name;
-                        local.address = rsp.display_name;
+                        // local.title = rsp.class ? rsp.class : rsp.display_name;
+                        var title = false,
+                            address = [];
+                        if(rsp.address){
+                            title = rsp.address[Object.keys(rsp.address)[0]];
+                            address = Object.keys(rsp.address).slice(1).map(function(x){ return rsp.address[x];});
+                            // Object.keys(rsp.address).forEach(function(x){
+                            //     if(!x.match(/city|country|house|hood|postcode|state|road|suburb|pedestrian|way/)){
+                            //         title = rsp.address[x];
+                            //     }else{
+                            //         address.push(rsp.address[x]);
+                            //     }
+                            // });
+                        }
+
+                        local.title = title ? title : rsp.display_name;
+                        local.address = address.join(',');
                         $http.get("tpl/newform.html")
                             .success(function(rsp){
                                 w.$(".meta-container .preloader").remove();
