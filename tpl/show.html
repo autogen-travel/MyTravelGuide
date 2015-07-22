@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-4">
-        <img class="img-responsive img-circle center-block" ng-src="{!cover()!}" style="max-width:100% !important"/>
+        <img class="img-responsive img-circle center-block" ng-src="{!cover()!}" style="max-width:100% !important" />
       </div>
       <div class="col-xs-12 col-md-8">
         {! annotation !}
@@ -15,7 +15,9 @@
     </div>
     <div class="row">
       <div class="col-xs-12 text-center">
-        <button class="btn btn-primary" ng-click="$parent.showSidebar(coord)">Редактировать точку</button>
+        <button class="btn btn-success" ng-click="$parent.addNewPlace({latlng:coord})">Добавить место</button>
+        <button class="btn btn-primary" ng-click="render.edit(0)">Редактировать место</button>
+        <button class="btn btn-danger" ng-click="destroy()">Удалить место</button>
       </div>
     </div>
   </div>
